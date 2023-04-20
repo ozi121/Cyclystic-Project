@@ -86,7 +86,7 @@ setwd("C:/Users/Owner/Desktop/R/Project")
 
 getwd()
 
-**My analysis will be using all the data collected in 2022. I read them into R using the 'readr' package that had been earlier loaded**
+**My analysis will be using all the data collected in 2022. I read them into R using the >readr package that had been earlier loaded**
 
 jan22 <- read_csv ("202201-divvy-tripdata.csv", show_col_types = FALSE)
 
@@ -169,7 +169,7 @@ colSums(is.na(all_trips))
 
 all_trips_new <- drop_na (all_trips)
 
-**Also, I went ahead to remove duplicate values by ride_id using the function 'duplicated' and assigned it to the df 'all_trips_new'**
+**Also, I went ahead to remove duplicate values by ride_id using the function >duplicated and assigned it to the df 'all_trips_new'**
 
 all_trips_new <- all_trips_new [!duplicated(all_trips_new$ride_id), ]
 
@@ -199,7 +199,7 @@ all_trips_new$start_time <- format(as.POSIXct (all_trips_new$started_at), format
 
 all_trips_new$end_time <- format(as.POSIXct (all_trips_new$ended_at), format = "%H : %M:%S")
 
-**To get the the trip_duration in minutes, I looked for the difference between ended_at ans started_at using the function 'difftime', divide it by 60 and assigned it to the df 'trip_duration' in the format 'as.double'**
+**To get the the trip_duration in minutes, I looked for the difference between ended_at ans started_at using the function 'difftime', divide it by 60 and assigned it to the df 'trip_duration' in the format >as.double**
 
 all_trips_new$trip_duration <- (as.double(difftime(all_trips_new$ended_at, all_trips_new$started_at)))/60
 
@@ -207,7 +207,7 @@ all_trips_new$trip_duration <- (as.double(difftime(all_trips_new$ended_at, all_t
 
 nrow(subset(all_trips_new, trip_duration < 0))
 
-**I also checked for test rides that were made by company for quality checks using the function 'subset' combined with 'nrow' to return the number of rows that meets the condition**
+**I also checked for test rides that were made by company for quality checks using the function 'subset' combined with >nrow to return the number of rows that meets the condition**
 
 nrow(subset(all_trips_new, start_station_name %like% "TEST")) 
 
@@ -215,7 +215,7 @@ nrow(subset(all_trips_new, start_station_name %like% "Test"))
 
 nrow(subset(all_trips_new, start_station_name %like% "test")) 
 
-**I removed trip_durations whose trip length was negative using the operator '!'**
+**I removed trip_durations whose trip length was negative using the operator >!**
 
 all_trips_new <- all_trips_new [!(all_trips_new$trip_duration < 0), ]
 
@@ -225,7 +225,7 @@ all_trips_new <- all_trips_new [!((all_trips_new$start_station_name %like% "TEST
   all_trips_new$start_station_name %like% "Test"| 
     all_trips_new$start_station_name %like% "test")),]
 
-**I made sure to check that customer type has two distinct values using the 'table' function to classify them**
+**I made sure to check that customer type has two distinct values using the >table function to classify them**
 
 table(all_trips_new$customer_type)
 
@@ -235,6 +235,6 @@ setNames(aggregate(trip_duration ~ customer_type, all_trips_new, sum), c("custom
 
 glimpse(all_trips_new)
 
-**Everything looks good. I proceeded to export my data to my working directory in csv format using the 'write' function**
+**Everything looks good. I proceeded to export my data to my working directory in csv format using the >write function**
 
 write.csv(all_trips_new, "all_trips.csv")
