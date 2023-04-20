@@ -78,15 +78,15 @@ library (data.table)
 library (tidyr)
 
 
-**After calling the libraries, I set my working directory
-**
+**After calling the libraries, I set my working directory**
+
 setwd("C:/Users/Owner/Desktop/R/Project")
 
-I checked working directory to be sure it was ready
+**I checked working directory to be sure it was ready**
 
 getwd()
 
-My analysis will be using all the data collected in 2022. I read them into R using the 'readr' package that had been earlier loaded
+**My analysis will be using all the data collected in 2022. I read them into R using the 'readr' package that had been earlier loaded**
 
 jan22 <- read_csv ("202201-divvy-tripdata.csv", show_col_types = FALSE)
 
@@ -112,8 +112,8 @@ nov22 <- read_csv ("202211-divvy-tripdata.csv", show_col_types = FALSE)
 
 dec22 <- read_csv ("202212-divvy-tripdata.csv", show_col_types = FALSE)
 
-After reading all the dataset into R, I checked the structure to make sure they are all the same. This is very important because R will not merge the dataset if they 
-have different structures.
+**After reading all the dataset into R, I checked the structure to make sure they are all the same. This is very important because R will not merge the dataset if they 
+have different structures.**
 
 str(jan22)
 
@@ -139,72 +139,75 @@ str(nov22)
 
 str(dec22) 
 
-The structure of the dataset are thesame. Now, I can proceed to merge all the dataset using the function 'bind_rows'
+
+
+**The structure of the dataset are thesame. Now, I can proceed to merge all the dataset using the function 'bind_rows'**
 
 all_trips <- bind_rows (jan22, feb22, march22, april22, may22, june22, july22, aug22, sep22, oct22, nov22, dec22)
 
-Check new dataset
+
+
+**Check new dataset**
 
 glimps(all_trips)
 
-Some of the column names were unnecesarily long. So, I renamed these columns using the 'rename' function
+**Some of the column names were unnecesarily long. So, I renamed these columns using the 'rename' function**
 
 all_trips <- all_trips %>%
   rename (ride_type = rideable_type,
           customer_type = member_casual)
 
-I check dataset to make sure these columns were renamed properly
+**I check dataset to make sure these columns were renamed properly**
 
 glimpse(all_trips)
 
-I went ahead to check for NA values using the is.na function in R. I also used the 'ColSums' to sum the number of missing value
+**I went ahead to check for NA values using the is.na function in R. I also used the 'ColSums' to sum the number of missing value**
 
 colSums(is.na(all_trips))
 
-I discovered about ten thousand missing values. I proceeded to use the 'drop_na' function to remove the rows with missing values and saved/assigned the dataset to a new df:
+**I discovered about ten thousand missing values. I proceeded to use the 'drop_na' function to remove the rows with missing values and saved/assigned the dataset to a new df:**
 
 all_trips_new <- drop_na (all_trips)
 
-Also, I went ahead to remove duplicate values by ride_id using the function 'duplicated' and assigned it to the df 'all_trips_new'
+**Also, I went ahead to remove duplicate values by ride_id using the function 'duplicated' and assigned it to the df 'all_trips_new'**
 
 all_trips_new <- all_trips_new [!duplicated(all_trips_new$ride_id), ]
 
-To help me aggregate, I add new columns. I first extracted 'hour' fro started_at and then converted it to a numeric value
+**To help me aggregate, I add new columns. I first extracted 'hour' fro started_at and then converted it to a numeric value**
 
 all_trips_new$hour <- format(as.POSIXct (all_trips_new$started_at), format = "%H")
 
 all_trips_new$hour <- as.numeric(all_trips_new$hour)
 
-Then I extracted day_of_the_week
+**Then I extracted day_of_the_week**
 
 all_trips_new$day_of_the_week <- format (as.Date(all_trips_new$started_at), '%a')  
 
-I also extracted the month of the year and assigned it to the df 'month'
+**I also extracted the month of the year and assigned it to the df 'month'**
 
 all_trips_new$month <- format(as.Date(all_trips_new$started_at), '%b_%y')
 
-Column for day when the trip started and ended. Extract date element from start_at and ended_at and assing it to the df start_date and end_date respectively
+**Column for day when the trip started and ended. Extract date element from start_at and ended_at and assing it to the df start_date and end_date respectively**
 
 all_trips_new$start_date <- as.Date (all_trips_new$started_at)
 
 all_trips_new$end_date <- as.Date (all_trips_new$ended_at)
 
-I extracted time element from both startd_at and ended_at
+**I extracted time element from both startd_at and ended_at**
 
 all_trips_new$start_time <- format(as.POSIXct (all_trips_new$started_at), format = "%H : %M:%S")
 
 all_trips_new$end_time <- format(as.POSIXct (all_trips_new$ended_at), format = "%H : %M:%S")
 
-To get the the trip_duration in minutes, I looked for the difference between ended_at ans started_at using the function 'difftime', divide it by 60 and assigned it to the df 'trip_duration' in the format 'as.double'
+**To get the the trip_duration in minutes, I looked for the difference between ended_at ans started_at using the function 'difftime', divide it by 60 and assigned it to the df 'trip_duration' in the format 'as.double'**
 
 all_trips_new$trip_duration <- (as.double(difftime(all_trips_new$ended_at, all_trips_new$started_at)))/60
 
-After creating the column 'trip_duration', I checked for trip lengths less than 0
+**After creating the column 'trip_duration', I checked for trip lengths less than 0**
 
 nrow(subset(all_trips_new, trip_duration < 0))
 
-I also checked for test rides that were made by company for quality checks using the function 'subset' combined with 'nrow' to return the number of rows that meets the
-condition
+**I also checked for test rides that were made by company for quality checks using the function 'subset' combined with 'nrow' to return the number of rows that meets the condition**
 
 nrow(subset(all_trips_new, start_station_name %like% "TEST")) 
 
@@ -212,26 +215,26 @@ nrow(subset(all_trips_new, start_station_name %like% "Test"))
 
 nrow(subset(all_trips_new, start_station_name %like% "test")) 
 
-I removed trip_durations whose trip length was negative using the operator '!'
+**I removed trip_durations whose trip length was negative using the operator '!'**
 
 all_trips_new <- all_trips_new [!(all_trips_new$trip_duration < 0), ]
 
-After finding out the test rides that were made by company for quality checks, I went ahead to remove them
+**After finding out the test rides that were made by company for quality checks, I went ahead to remove them**
 
 all_trips_new <- all_trips_new [!((all_trips_new$start_station_name %like% "TEST" |
   all_trips_new$start_station_name %like% "Test"| 
     all_trips_new$start_station_name %like% "test")),]
 
-I made sure to check that customer type has two distinct values using the 'table' function to classify them
+**I made sure to check that customer type has two distinct values using the 'table' function to classify them**
 
 table(all_trips_new$customer_type)
 
-I aggregated total trip duration by customer type. (Thisprocess was not important to me since I wont be using R to visualize)
+**I aggregated total trip duration by customer type. (Thisprocess was not important to me since I wont be using R to visualize)**
 
 setNames(aggregate(trip_duration ~ customer_type, all_trips_new, sum), c("customer_type", "total_trip_duration(mins) "))
 
 glimpse(all_trips_new)
 
-Everything looks good. I proceeded to export my data to my working directory in csv format using the 'write' function
+**Everything looks good. I proceeded to export my data to my working directory in csv format using the 'write' function**
 
 write.csv(all_trips_new, "all_trips.csv")
