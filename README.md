@@ -26,19 +26,33 @@ and I will design a new marketing strategy to convert casual riders into annual 
 
 This data was collected using sensors at the different docking stations as the bikes can be unlocked from one station and returned to any other station in the system 
 anytime. The dataset has the following structure:
+
   ..   ride_id = col_character(),
+  
   ..   rideable_type = col_character(),
+  
   ..   started_at = col_datetime(format = ""),
+  
   ..   ended_at = col_datetime(format = ""),
+  
   ..   start_station_name = col_character(),
+  
   ..   start_station_id = col_character(),
+  
   ..   end_station_name = col_character(),
+  
   ..   end_station_id = col_character(),
+  
   ..   start_lat = col_double(),
+  
   ..   start_lng = col_double(),
+  
   ..   end_lat = col_double(),
+  
   ..   end_lng = col_double(),
+  
   ..   member_casual = col_character()
+  
  The dataset was uploaded as a zipped file on Bitbucket and can be found here [link] (https://divvy-tripdata.s3.amazonaws.com/index.html)
 
 
@@ -46,13 +60,21 @@ anytime. The dataset has the following structure:
 
 I chose R for the cleaning of this dataset as it has millions of rows. I used RGui but RStudio cloud or RStudio desktop works perfectly fine.
 Before starting, load all the packages that will be needed for the analysis. Since I have them alredy loaded, I will go straight to calling the libraries.
+
 library (tidyverse)
+
 library (ggplot2)
+
 library (lubridate)
+
 library (dplyr)
+
 library (readr)
+
 library (janitor)
+
 library (data.table)
+
 library (tidyr)
 
 
