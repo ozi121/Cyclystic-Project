@@ -1,12 +1,12 @@
 # Cyclystic-Project
 
-##**Introduction**
+**Introduction**
 
 For this analysis, I will be working as a junior data analyst with a team of data anlyst at a fictional company named 'Cyclistic' to answer key business questions. 
 I will also follow the steps of the data analysis process: ask, prepare, process, analyze, share,  and act
 
 
-**About the Company**
+######**About the Company**
 
 In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a 
 network of 692 stations across Chicago. The bikes can be unlocked from one station and returned to any other station in the system  anytime. 
@@ -15,7 +15,7 @@ possible was the flexibility of its pricing plans: single-ride passes, full-day 
 are referred to as casual riders. Customers who purchase annual memberships are Cyclistic members.
 
 
-**Business Task**
+######**Business Task**
 
 The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, my team and I will have to understand 
 how casual riders and annual members use Cyclistic bikes differently by analyzing the Cyclistic historical bike trip data to identify trends. From these insights, my team 
@@ -53,7 +53,7 @@ anytime. The dataset has the following structure:**
   
   ..   member_casual = col_character()
   
-** The dataset was uploaded as a zipped file on Bitbucket and can be found here [link] (https://divvy-tripdata.s3.amazonaws.com/index.html)**
+** The dataset was uploaded as a zipped file on Bitbucket and can be found here** [link] (https://divvy-tripdata.s3.amazonaws.com/). 
 
 
 **Data Cleaning Process**
