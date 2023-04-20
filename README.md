@@ -1,6 +1,6 @@
 # Cyclystic-Project
 
-**Introduction**
+##**Introduction**
 
 For this analysis, I will be working as a junior data analyst with a team of data anlyst at a fictional company named 'Cyclistic' to answer key business questions. 
 I will also follow the steps of the data analysis process: ask, prepare, process, analyze, share,  and act
@@ -112,7 +112,7 @@ nov22 <- read_csv ("202211-divvy-tripdata.csv", show_col_types = FALSE)
 
 dec22 <- read_csv ("202212-divvy-tripdata.csv", show_col_types = FALSE)
 
-**After reading all the dataset into R, I checked the structure to make sure they are all the same. This is very important because R will not merge the dataset if they 
+**After reading all the dataset into R, I checked the structure usin the function >str to make sure they are all the same. This is very important because R will not merge the dataset if they 
 have different structures.**
 
 str(jan22)
@@ -141,7 +141,7 @@ str(dec22)
 
 
 
-**The structure of the dataset are thesame. Now, I can proceed to merge all the dataset using the function 'bind_rows'**
+**The structure of the dataset are thesame. Now, I can proceed to merge all the dataset using the function >bind_rows**
 
 all_trips <- bind_rows (jan22, feb22, march22, april22, may22, june22, july22, aug22, sep22, oct22, nov22, dec22)
 
@@ -151,7 +151,7 @@ all_trips <- bind_rows (jan22, feb22, march22, april22, may22, june22, july22, a
 
 glimps(all_trips)
 
-**Some of the column names were unnecesarily long. So, I renamed these columns using the 'rename' function**
+**Some of the column names were unnecesarily long. So, I renamed these columns using the >rename function**
 
 all_trips <- all_trips %>%
   rename (ride_type = rideable_type,
@@ -161,11 +161,11 @@ all_trips <- all_trips %>%
 
 glimpse(all_trips)
 
-**I went ahead to check for NA values using the is.na function in R. I also used the 'ColSums' to sum the number of missing value**
+**I went ahead to check for NA values using the is.na function in R. I also used the >ColSums to sum the number of missing value**
 
 colSums(is.na(all_trips))
 
-**I discovered about ten thousand missing values. I proceeded to use the 'drop_na' function to remove the rows with missing values and saved/assigned the dataset to a new df:**
+**I discovered about ten thousand missing values. I proceeded to use the >drop_na function to remove the rows with missing values and saved/assigned the dataset to a new df:**
 
 all_trips_new <- drop_na (all_trips)
 
