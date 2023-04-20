@@ -5,6 +5,7 @@
 For this analysis, I will be working as a junior data analyst with a team of data anlyst at a fictional company named 'Cyclistic' to answer key business questions. 
 I will also follow the steps of the data analysis process: ask, prepare, process, analyze, share,  and act
 
+
 **About the Company**
 
 In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a 
@@ -13,12 +14,16 @@ Until now, Cyclistic’s marketing strategy relied on building general awareness
 possible was the flexibility of its pricing plans: single-ride passes, full-day passes, and annual memberships. Customers who purchase single-ride or full-day passes 
 are referred to as casual riders. Customers who purchase annual memberships are Cyclistic members.
 
+
 **Business Task**
+
 The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, my team and I will have to understand 
 how casual riders and annual members use Cyclistic bikes differently by analyzing the Cyclistic historical bike trip data to identify trends. From these insights, my team 
 and I will design a new marketing strategy to convert casual riders into annual members.
 
+
 **Data Source**
+
 This data was collected using sensors at the different docking stations as the bikes can be unlocked from one station and returned to any other station in the system 
 anytime. The dataset has the following structure:
   ..   ride_id = col_character(),
@@ -36,7 +41,9 @@ anytime. The dataset has the following structure:
   ..   member_casual = col_character()
  The dataset was uploaded as a zipped file on Bitbucket and can be found here [link] (https://divvy-tripdata.s3.amazonaws.com/index.html)
 
+
 **Data Cleaning Process**
+
 I chose R for the cleaning of this dataset as it has millions of rows. I used RGui but RStudio cloud or RStudio desktop works perfectly fine.
 Before starting, load all the packages that will be needed for the analysis. Since I have them alredy loaded, I will go straight to calling the libraries.
 library (tidyverse)
@@ -48,7 +55,9 @@ library (janitor)
 library (data.table)
 library (tidyr)
 
+
 After calling the libraries, I set my working directory
+
 setwd("C:/Users/Owner/Desktop/R/Project")
 
 I checked working directory to be sure it was ready
