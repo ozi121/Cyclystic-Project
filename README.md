@@ -24,8 +24,8 @@ and I will design a new marketing strategy to convert casual riders into annual 
 
 **Data Source**
 
-This data was collected using sensors at the different docking stations as the bikes can be unlocked from one station and returned to any other station in the system 
-anytime. The dataset has the following structure:
+**This data was collected using sensors at the different docking stations as the bikes can be unlocked from one station and returned to any other station in the system 
+anytime. The dataset has the following structure:**
 
   ..   ride_id = col_character(),
   
@@ -53,7 +53,7 @@ anytime. The dataset has the following structure:
   
   ..   member_casual = col_character()
   
- The dataset was uploaded as a zipped file on Bitbucket and can be found here [link] (https://divvy-tripdata.s3.amazonaws.com/index.html)
+** The dataset was uploaded as a zipped file on Bitbucket and can be found here [link] (https://divvy-tripdata.s3.amazonaws.com/index.html)**
 
 
 **Data Cleaning Process**
@@ -78,8 +78,8 @@ library (data.table)
 library (tidyr)
 
 
-After calling the libraries, I set my working directory
-
+**After calling the libraries, I set my working directory
+**
 setwd("C:/Users/Owner/Desktop/R/Project")
 
 I checked working directory to be sure it was ready
