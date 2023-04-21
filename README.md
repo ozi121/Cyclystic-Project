@@ -1,10 +1,5 @@
 # Cyclystic-Project
 
-**Introduction**
-
-For this analysis, I will be working as a junior data analyst with a team of data anlyst at a fictional company named 'Cyclistic' to answer key business questions. 
-I will also follow the steps of the data analysis process: ask, prepare, process, analyze, share,  and act
-
 
 ######**About the Company**
 
