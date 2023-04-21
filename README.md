@@ -73,7 +73,7 @@ library (data.table)
 library (tidyr)
 
 
-**After calling the libraries, I set my working directory**
+**After loading the libraries, I set my working directory**
 
 setwd("C:/Users/Owner/Desktop/R/Project")
 
