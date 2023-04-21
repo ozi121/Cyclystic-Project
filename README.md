@@ -59,7 +59,7 @@ anytime. The dataset has the following structure:**
 **Data Cleaning Process**
 
 I chose R for the cleaning of this dataset as it has millions of rows. I used RGui but RStudio cloud or RStudio desktop works perfectly fine.
-Before starting, load all the packages that will be needed for the analysis. Since I have them alredy loaded, I will go straight to calling the libraries.
+Before starting, install all the packages that will be needed for the analysis. Since I have them alredy installed, I will go straight to loading the libraries.
 
 library (tidyverse)
 
