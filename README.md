@@ -48,7 +48,7 @@ anytime. The dataset has the following structure:**
   
   ..   member_casual = col_character()
   
-** The dataset was uploaded as a zipped file on Bitbucket and can be found here** [link] (https://divvy-tripdata.s3.amazonaws.com/). 
+** The dataset was uploaded as a zipped file on Bitbucket and can be found here** [link](https://divvy-tripdata.s3.amazonaws.com/). 
 
 
 **Data Cleaning Process**
